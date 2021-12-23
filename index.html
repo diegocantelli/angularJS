@@ -34,6 +34,10 @@
                 {nome: "Ana", telefone: "9999987777"},
                 {nome: "Maria", telefone: "9999986688"}
             ];
+            $scope.adicionarContato = function(contato){
+                $scope.contatos.push(contato);
+            }
+
             $scope.teste1 = 'sas';
             $scope.teste2 = '';
         })
@@ -61,10 +65,10 @@
             <input class="form-control" type="text" ng-model="teste1" value={{teste1}}/>
        -->
 
-        <input class="form-control" type="text" ng-model="nome"/>
-        <input class="form-control" type="text" ng-model="telefone"/>
-        {{nome}}
-        {{telefone}}
+        <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
+        <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+        <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)">Adicionar Contato</button>
+        
     </div>
 </body>
 </html>
