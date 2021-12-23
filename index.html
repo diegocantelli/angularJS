@@ -24,7 +24,12 @@
         // localizando o módulu listaTelefonica e criando uma controller associada a este módulo
         // chamada listaTelefonicaCtrl
         angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope){
-            $scope.app = "Lista Telefonica"
+            $scope.app = "Lista Telefonica";
+            $scope.contatos = [
+                {nome: "Pedro", telefone: "9999988888"},
+                {nome: "Ana", telefone: "9999987777"},
+                {nome: "Maria", telefone: "9999986688"}
+            ]
         })
     </script>
 </head>
@@ -32,6 +37,16 @@
     <div class="jumbotron">
         <!-- <h4 ng-bind="app"></h4> -->
         <h4>{{app}}</h4>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+            </tr>
+            <tr ng-repeat="contato in contatos">
+                <td>{{contato.nome}}</td>
+                <td>{{contato.telefone}}</td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
