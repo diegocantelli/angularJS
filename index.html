@@ -25,6 +25,10 @@
         .selecionado{
             background-color: yellow;
         }
+
+        .negrito{
+            font-weight: bold;
+        }
     </style>
     <title>Lista Telefônica</title>
     <script src="angular.min.js"></script>
@@ -64,7 +68,8 @@
             $scope.teste1 = 'sas';
             $scope.teste2 = 'sa';
 
-            $scope.classe = "selecionado";
+            $scope.classe1 = "selecionado";
+            $scope.classe2 = "negrito";
         })
     </script>
 </head>
@@ -81,7 +86,7 @@
 
             <!-- ng-class -> irá buscar o valor dessa propriedade que foi definida em $scope, com base nesse valor
             irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
-            <tr ng-class="classe" ng-repeat="contato in contatos">
+            <tr ng-class="[classe1, classe2]" ng-repeat="contato in contatos">
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>
