@@ -15,11 +15,13 @@
         // localizando o módulu listaTelefonica e criando uma controller associada a este módulo
         // chamada listaTelefonicaCtrl
         angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope){
-
+            $scope.app = "Lista Telefonica"
         })
     </script>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
-    <h1>Titulo</h1>
+    <div>
+        <h4 ng-bind="app"></h4>
+    </div>
 </body>
 </html>
