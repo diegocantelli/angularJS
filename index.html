@@ -79,6 +79,7 @@
         <h4>{{app}}</h4>
         <table class="table">
             <tr>
+                <th></th>
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Operadora</th>
@@ -86,14 +87,14 @@
 
             <!-- ng-class -> irá buscar o valor dessa propriedade que foi definida em $scope, com base nesse valor
             irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
-            <tr ng-class="[classe1, classe2]" ng-repeat="contato in contatos">
+            <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+                <td><input type="checkbox" ng-model="contato.selecionado"></td>
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>
             </tr>
         </table>
         <hr/>
-
         <!-- ng-model procura alguma propriedade dentro de scope com o mesmo nome definido em seu valor
         no caso de arrays ou objetos irá procurar alguma propriedade com o mesmo valor definido.
         ng-model é utilizada para fazer o two way databind, conforme exemplo abaixo
