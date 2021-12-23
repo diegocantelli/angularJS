@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.usebootstrap.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        .jumbotron {
+            width: 400px;
+            text-align: center;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
     <title>Lista Telefônica</title>
     <script src="angular.min.js"></script>
     <script>
@@ -20,8 +29,9 @@
     </script>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
-    <div>
-        <h4 ng-bind="app"></h4>
+    <div class="jumbotron">
+        <!-- <h4 ng-bind="app"></h4> -->
+        <h4>{{app}}</h4>
     </div>
 </body>
 </html>
