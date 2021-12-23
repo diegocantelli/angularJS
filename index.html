@@ -50,9 +50,11 @@
             };
 
             $scope.operadoras = [
-                {nome:"Oi", codigo: 14},
-                {nome:"Vivo", codigo: 15},
-                {nome:"Tim", codigo: 16},
+                {nome:"Oi", codigo: 14   , categoria: "Celular"},
+                {nome:"Vivo", codigo: 15 , categoria: "Celular"},
+                {nome:"Tim", codigo: 16  , categoria: "Celular"},
+                {nome:"GVT", codigo: 25  , categoria: "Fixo"},
+                {nome:"Embratel", codigo: 21  , categoria: "Fixo"}
             ]
 
             $scope.teste1 = 'sas';
@@ -85,6 +87,9 @@
        -->
         <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
         <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+        <!-- <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras ">
+            <option value="">Selecione uma operadora</option>
+        </select> -->
         <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras ">
             <option value="">Selecione uma operadora</option>
         </select>
