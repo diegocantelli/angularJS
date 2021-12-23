@@ -17,6 +17,10 @@
         .form-control{
             margin-top: 5px;
         }
+
+        .mab-5{
+            margin-bottom: 5px;
+        }
     </style>
     <title>Lista Telefônica</title>
     <script src="angular.min.js"></script>
@@ -34,6 +38,7 @@
                 {nome: "Ana", telefone: "9999987777"},
                 {nome: "Maria", telefone: "9999986688"}
             ];
+
             $scope.adicionarContato = function(contato){
                 // angular.copy -> para não utilizar a mesma referência e as ações do input
                 // acabarem refletindo no item já adicionado à lista
@@ -42,7 +47,13 @@
                 //limpa as referências presentes nesta propriedade, por conta do 2way databind, os inputs
                 //tbm serão limpados
                 delete $scope.contato;
-            }
+            };
+
+            $scope.operadoras = [
+                {nome:"Oi", codigo: 14},
+                {nome:"Vivo", codigo: 15},
+                {nome:"Tim", codigo: 16},
+            ]
 
             $scope.teste1 = 'sas';
             $scope.teste2 = 'sa';
@@ -57,10 +68,12 @@
             <tr>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Operadora</th>
             </tr>
             <tr ng-repeat="contato in contatos">
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
+                <td>{{contato.operadora.nome}}</td>
             </tr>
         </table>
         <hr/>
@@ -70,9 +83,11 @@
         ng-model é utilizada para fazer o two way databind, conforme exemplo abaixo
             <input class="form-control" type="text" ng-model="teste1" value={{teste1}}/>
        -->
-
         <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
         <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+        <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras ">
+            <option value="">Selecione uma operadora</option>
+        </select>
         <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
         
     </div>
