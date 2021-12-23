@@ -21,6 +21,10 @@
         .mab-5{
             margin-bottom: 5px;
         }
+
+        .selecionado{
+            background-color: yellow;
+        }
     </style>
     <title>Lista Telefônica</title>
     <script src="angular.min.js"></script>
@@ -59,6 +63,8 @@
 
             $scope.teste1 = 'sas';
             $scope.teste2 = 'sa';
+
+            $scope.classe = "selecionado";
         })
     </script>
 </head>
@@ -66,13 +72,16 @@
     <div class="jumbotron">
         <!-- <h4 ng-bind="app"></h4> -->
         <h4>{{app}}</h4>
-        <table class="table table-striped">
+        <table class="table">
             <tr>
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Operadora</th>
             </tr>
-            <tr ng-repeat="contato in contatos">
+
+            <!-- ng-class -> irá buscar o valor dessa propriedade que foi definida em $scope, com base nesse valor
+            irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
+            <tr ng-class="classe" ng-repeat="contato in contatos">
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>
