@@ -13,6 +13,10 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .form-control{
+            margin-top: 5px;
+        }
     </style>
     <title>Lista Telefônica</title>
     <script src="angular.min.js"></script>
@@ -29,7 +33,9 @@
                 {nome: "Pedro", telefone: "9999988888"},
                 {nome: "Ana", telefone: "9999987777"},
                 {nome: "Maria", telefone: "9999986688"}
-            ]
+            ];
+            $scope.teste1 = 'sas';
+            $scope.teste2 = '';
         })
     </script>
 </head>
@@ -37,7 +43,7 @@
     <div class="jumbotron">
         <!-- <h4 ng-bind="app"></h4> -->
         <h4>{{app}}</h4>
-        <table>
+        <table class="table table-striped">
             <tr>
                 <th>Nome</th>
                 <th>Telefone</th>
@@ -47,6 +53,18 @@
                 <td>{{contato.telefone}}</td>
             </tr>
         </table>
+        <hr/>
+
+        <!-- ng-model procura alguma propriedade dentro de scope com o mesmo nome definido em seu valor
+        no caso de arrays ou objetos irá procurar alguma propriedade com o mesmo valor definido.
+        ng-model é utilizada para fazer o two way databind, conforme exemplo abaixo
+            <input class="form-control" type="text" ng-model="teste1" value={{teste1}}/>
+       -->
+
+        <input class="form-control" type="text" ng-model="nome"/>
+        <input class="form-control" type="text" ng-model="telefone"/>
+        {{nome}}
+        {{telefone}}
     </div>
 </body>
 </html>
