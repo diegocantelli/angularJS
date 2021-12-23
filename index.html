@@ -35,7 +35,9 @@
                 {nome: "Maria", telefone: "9999986688"}
             ];
             $scope.adicionarContato = function(contato){
-                $scope.contatos.push(contato);
+                // angular.copy -> para não utilizar a mesma referência e as ações do input
+                // acabarem refletindo no item já adicionado à lista
+                $scope.contatos.push(angular.copy(contato));
             }
 
             $scope.teste1 = 'sas';
