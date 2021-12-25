@@ -57,6 +57,16 @@
                 delete $scope.contato;
             };
 
+            $scope.apagarContato = function(contatos){
+                
+                var contatosNaoSelecionados = contatos.filter(function(contato){
+                    if(!contato.selecionado) return contato;
+                });
+
+                $scope.contatos = contatosNaoSelecionados;
+                console.log(contatosSelecionados);
+            }
+
             $scope.operadoras = [
                 {nome:"Oi", codigo: 14   , categoria: "Celular"},
                 {nome:"Vivo", codigo: 15 , categoria: "Celular"},
@@ -109,6 +119,7 @@
             <option value="">Selecione uma operadora</option>
         </select>
         <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
+        <button class="btn btn-danger btn-block" ng-click="apagarContato(contatos)">Apagar Contato</button>
         
     </div>
 </body>
