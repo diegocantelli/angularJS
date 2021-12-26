@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.usebootstrap.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <style>
         .jumbotron {
-            width: 400px;
+            width: 600px;
             text-align: center;
             margin-top: 20px;
             margin-left: auto;
@@ -43,9 +43,9 @@
         angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope){
             $scope.app = "Lista Telefonica";
             $scope.contatos = [
-                {nome: "Pedro", telefone: "9999988888", cor: "yellow"},
-                {nome: "Ana", telefone: "9999987777", cor: "blue"},
-                {nome: "Maria", telefone: "9999986688", cor: "red"}
+                {nome: "Pedro", data: new Date(), telefone: "9999988888", cor: "yellow"},
+                {nome: "Ana", data: new Date(),telefone: "9999987777", cor: "blue"},
+                {nome: "Maria", data: new Date(), telefone: "9999986688", cor: "red"}
             ];
 
             $scope.adicionarContato = function(contato){
@@ -102,6 +102,7 @@
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Operadora</th>
+                <th>Data</th>
                 <th></th>
             </tr>
 
@@ -112,6 +113,7 @@
                 <td>{{contato.nome | uppercase}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>
+                <td>{{contato.data | date:'dd/MM/yyyy HH:mm'}}</td>
                 <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
             </tr>
         </table>
