@@ -93,7 +93,7 @@
     <div class="jumbotron">
         <!-- <h4 ng-bind="app"></h4> -->
         <h4>{{app}}</h4>
-        <table class="table">
+        <table class="table" ng-show="contatos.length > 0">
             <tr>
                 <th></th>
                 <th>Nome</th>
@@ -127,7 +127,10 @@
             <option value="">Selecione uma operadora</option>
         </select>
         <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
-        <button class="btn btn-danger btn-block" ng-click="apagarContato(contatos)" ng-disabled="!isContatoSelecionado(contatos)">Apagar Contato</button>
+
+        <!-- Ao utilizar o ng-show, o elemento continuará existindo, mas com display:none.
+        Ao utilizar o ng-if, o elemento será removido do html, não havendo nenhuma referência para ele no HTML -->
+        <button class="btn btn-danger btn-block" ng-click="apagarContato(contatos)" ng-show="isContatoSelecionado(contatos)">Apagar Contato</button>
         
     </div>
 </body>
