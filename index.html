@@ -129,6 +129,10 @@
             <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras ">
                 <option value="">Selecione uma operadora</option>
             </select>
+
+            <div ng-show="contatoForm.$invalid" class="alert alert-danger">
+                Por favor, preencha o nome e o telefone
+            </div>
             <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
 
             <!-- Ao utilizar o ng-show, o elemento continuará existindo, mas com display:none.
