@@ -82,7 +82,12 @@
                 {nome:"Tim", codigo: 16  , categoria: "Celular"},
                 {nome:"GVT", codigo: 25  , categoria: "Fixo"},
                 {nome:"Embratel", codigo: 21  , categoria: "Fixo"}
-            ]
+            ];
+
+            $scope.ordenarPor = function(criterioOrdenacao) {
+                $scope.criterioDeOrdenacao = criterioOrdenacao;
+                $scope.isDesc = !$scope.isDesc;
+            }
 
             $scope.teste1 = 'sas';
             $scope.teste2 = 'sa';
@@ -100,8 +105,8 @@
         <table class="table" ng-show="contatos.length > 0">
             <tr>
                 <th></th>
-                <th>Nome</th>
-                <th>Telefone</th>
+                <th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
+                <th><a href="" ng-click="ordenarPor('telefone')"">Telefone</a></th>
                 <th>Operadora</th>
                 <th>Data</th>
                 <th></th>
@@ -109,7 +114,7 @@
 
             <!-- ng-class -> irá buscar o valor dessa propriedade que foi definida em $scope, com base nesse valor
             irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
-            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca | orderBy:'nome':true">
+            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca | orderBy:criterioDeOrdenacao:isDesc">
                 <td><input type="checkbox" ng-model="contato.selecionado"></td>
                 <td>{{contato.nome | uppercase}}</td>
                 <td>{{contato.telefone}}</td>
@@ -132,7 +137,7 @@
             <!-- <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras ">
                 <option value="">Selecione uma operadora</option>
             </select> -->
-            <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras ">
+            <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras | orderBy:'nome'">
                 <option value="">Selecione uma operadora</option>
             </select>
             {{contatoForm.nome.$error}}
