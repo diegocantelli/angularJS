@@ -41,13 +41,19 @@
 
         // localizando o módulu listaTelefonica e criando uma controller associada a este módulo
         // chamada listaTelefonicaCtrl
-        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter){
+        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter, $http){
             $scope.app = "Lista Telefonica";
-            $scope.contatos = [
-                {nome: $filter('uppercase')("Pedro"), data: new Date(), telefone: "9999988888", cor: "yellow"},
-                {nome: "Ana", data: new Date(),telefone: "9999987777", cor: "blue"},
-                {nome: "Maria", data: new Date(), telefone: "9999986688", cor: "red"}
-            ];
+            // $scope.contatos = [
+            //     {nome: $filter('uppercase')("Pedro"), data: new Date(), telefone: "9999988888", cor: "yellow"},
+            //     {nome: "Ana", data: new Date(),telefone: "9999987777", cor: "blue"},
+            //     {nome: "Maria", data: new Date(), telefone: "9999986688", cor: "red"}
+            // ];
+
+            var carregarContatos = function(){
+                $http.get("https://localhost:44343/api/Contatos").then(response => console.log(response));
+            }
+
+            $scope.contatos = [];
 
             $scope.adicionarContato = function(contato){
                 // angular.copy -> para não utilizar a mesma referência e as ações do input
@@ -95,6 +101,8 @@
 
             $scope.classe1 = "selecionado";
             $scope.classe2 = "negrito";
+
+            carregarContatos();
         })
     </script>
 </head>
