@@ -42,9 +42,9 @@
         angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope){
             $scope.app = "Lista Telefonica";
             $scope.contatos = [
-                {nome: "Pedro", telefone: "9999988888"},
-                {nome: "Ana", telefone: "9999987777"},
-                {nome: "Maria", telefone: "9999986688"}
+                {nome: "Pedro", telefone: "9999988888", cor: "yellow"},
+                {nome: "Ana", telefone: "9999987777", cor: "blue"},
+                {nome: "Maria", telefone: "9999986688", cor: "red"}
             ];
 
             $scope.adicionarContato = function(contato){
@@ -99,6 +99,7 @@
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Operadora</th>
+                <th></th>
             </tr>
 
             <!-- ng-class -> irá buscar o valor dessa propriedade que foi definida em $scope, com base nesse valor
@@ -108,6 +109,7 @@
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>
+                <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
             </tr>
         </table>
         <hr/>
