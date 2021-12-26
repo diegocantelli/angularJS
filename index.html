@@ -96,6 +96,7 @@
     <div class="jumbotron">
         <!-- <h4 ng-bind="app"></h4> -->
         <h4>{{app}}</h4>
+        <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="O quê você está buscando?">
         <table class="table" ng-show="contatos.length > 0">
             <tr>
                 <th></th>
@@ -108,7 +109,7 @@
 
             <!-- ng-class -> irá buscar o valor dessa propriedade que foi definida em $scope, com base nesse valor
             irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
-            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos">
+            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca">
                 <td><input type="checkbox" ng-model="contato.selecionado"></td>
                 <td>{{contato.nome | uppercase}}</td>
                 <td>{{contato.telefone}}</td>
