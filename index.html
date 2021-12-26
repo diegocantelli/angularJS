@@ -118,21 +118,25 @@
         ng-model é utilizada para fazer o two way databind, conforme exemplo abaixo
             <input class="form-control" type="text" ng-model="teste1" value={{teste1}}/>
        -->
-        <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
-        <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
-        <!-- <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras ">
-            <option value="">Selecione uma operadora</option>
-        </select> -->
-        <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras ">
-            <option value="">Selecione uma operadora</option>
-        </select>
-        <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
+       <!-- irá criar um objeto de validaçao dentro de $scope chamado contatoForm -->
 
-        <!-- Ao utilizar o ng-show, o elemento continuará existindo, mas com display:none.
-        Ao utilizar o ng-if, o elemento será removido do html, não havendo nenhuma referência para ele no HTML -->
-        <button class="btn btn-danger btn-block" ng-click="apagarContato(contatos)" ng-show="isContatoSelecionado(contatos)">Apagar Contato</button>
-        
+       <form name="contatoForm">
+            <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome" ng-required="true"/>
+            <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone" ng-required="true"/>
+            <!-- <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras ">
+                <option value="">Selecione uma operadora</option>
+            </select> -->
+            <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras ">
+                <option value="">Selecione uma operadora</option>
+            </select>
+            <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
+
+            <!-- Ao utilizar o ng-show, o elemento continuará existindo, mas com display:none.
+            Ao utilizar o ng-if, o elemento será removido do html, não havendo nenhuma referência para ele no HTML -->
+            <button class="btn btn-danger btn-block" ng-click="apagarContato(contatos)" ng-show="isContatoSelecionado(contatos)">Apagar Contato</button>
+       </form>
+         
     </div>
-    <div ng-include="'footer.html'"></div>
+    <!-- <div ng-include="'footer.html'"></div> -->
 </body>
 </html>
