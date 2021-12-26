@@ -109,7 +109,7 @@
 
             <!-- ng-class -> irá buscar o valor dessa propriedade que foi definida em $scope, com base nesse valor
             irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
-            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca | orderBy:'nome'">
+            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca | orderBy:'nome':true">
                 <td><input type="checkbox" ng-model="contato.selecionado"></td>
                 <td>{{contato.nome | uppercase}}</td>
                 <td>{{contato.telefone}}</td>
