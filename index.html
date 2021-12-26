@@ -77,11 +77,11 @@
             }
 
             $scope.operadoras = [
-                {nome:"Oi", codigo: 14   , categoria: "Celular"},
-                {nome:"Vivo", codigo: 15 , categoria: "Celular"},
-                {nome:"Tim", codigo: 16  , categoria: "Celular"},
-                {nome:"GVT", codigo: 25  , categoria: "Fixo"},
-                {nome:"Embratel", codigo: 21  , categoria: "Fixo"}
+                {nome:"Oi", codigo: 14   , categoria: "Celular", preco: 1},
+                {nome:"Vivo", codigo: 15 , categoria: "Celular", preco: 2},
+                {nome:"Tim", codigo: 16  , categoria: "Celular", preco: 2},
+                {nome:"GVT", codigo: 25  , categoria: "Fixo", preco: 1},
+                {nome:"Embratel", codigo: 21  , categoria: "Fixo", preco: 3}
             ];
 
             $scope.ordenarPor = function(criterioOrdenacao) {
@@ -137,7 +137,7 @@
             <!-- <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras ">
                 <option value="">Selecione uma operadora</option>
             </select> -->
-            <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras | orderBy:'nome'">
+            <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome + '(' + (operadora.preco | currency) + ')' for operadora in operadoras | orderBy:'nome'">
                 <option value="">Selecione uma operadora</option>
             </select>
             {{contatoForm.nome.$error}}
