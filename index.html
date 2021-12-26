@@ -44,7 +44,7 @@
         angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter){
             $scope.app = "Lista Telefonica";
             $scope.contatos = [
-                {nome: "Pedro", data: new Date(), telefone: "9999988888", cor: "yellow"},
+                {nome: $filter('uppercase')("Pedro"), data: new Date(), telefone: "9999988888", cor: "yellow"},
                 {nome: "Ana", data: new Date(),telefone: "9999987777", cor: "blue"},
                 {nome: "Maria", data: new Date(), telefone: "9999986688", cor: "red"}
             ];
@@ -117,7 +117,7 @@
             irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
             <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca | orderBy:criterioDeOrdenacao:isDesc">
                 <td><input type="checkbox" ng-model="contato.selecionado"></td>
-                <td>{{contato.nome | uppercase}}</td>
+                <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>
                 <td>{{contato.data | date:'dd/MM/yyyy HH:mm'}}</td>
