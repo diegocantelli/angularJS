@@ -32,10 +32,11 @@
     </style>
     <title>Lista Telefônica</title>
     <script src="angular.min.js"></script>
+    <script src="angular-messages.min.js"></script>
     <script>
         //Criação do módulo
         //[] -> lista de módulos que podem fazer parte deste módulo
-        angular.module("listaTelefonica", []);
+        angular.module("listaTelefonica", ["ngMessages"]);
 
         // localizando o módulu listaTelefonica e criando uma controller associada a este módulo
         // chamada listaTelefonicaCtrl
@@ -131,13 +132,16 @@
             <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras ">
                 <option value="">Selecione uma operadora</option>
             </select>
+            {{contatoForm.nome.$error}}
+            <div ng-messages="contatoForm.nome.$error">
+                <!-- <div ng-message="required" class="alert alert-danger">
+                    Por favor, preencha o nome.
+                </div> -->
+                <div ng-message="minlength" class="alert alert-danger">
+                    O campo deve ter no mínimo 10 caracteres.
+                </div>
+            </div>
 
-            <div ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty" class="alert alert-danger">
-                Por favor, preencha o nome.
-            </div>
-            <div ng-show="contatoForm.nome.$error.minlength" class="alert alert-danger">
-                O campo deve ter no mínimo 10 caracteres.
-            </div>
             <div ng-show="contatoForm.telefone.$invalid && contatoForm.telefone.$dirty" class="alert alert-danger">
                 Por favor, preencha o telefone.
             </div>
