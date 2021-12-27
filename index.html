@@ -50,15 +50,19 @@
             // ];
 
             var carregarContatos = function(){
-                $http.get("https://localhost:44343/api/Contatos").then(function(response) {
+                $http.get("https://localhost:44343/api/Contatos")
+                .then(function(response) {
                     $scope.contatos = response.data;
-                });
+                })
+                .catch(err => console.log("ERRO: ", err));
             }
 
             var carregarOperadoras = function(){
-                $http.get("https://localhost:44343/api/operadoras").then(function(response){
+                $http.get("https://localhost:44343/api/operadoras")
+                .then(function(response){
                     $scope.operadoras = response.data;
-                });
+                })
+                .catch(err => console.log("ERRO: ", err));
             }
 
             $scope.contatos = [];
@@ -66,13 +70,16 @@
             $scope.adicionarContato = function(contato){
                 // angular.copy -> para não utilizar a mesma referência e as ações do input
                 // acabarem refletindo no item já adicionado à lista
-                $scope.contatos.push(angular.copy(contato));
+                // $scope.contatos.push(angular.copy(contato));
+                $http.post("https://localhost:44343/api/Contatos", contato).then(function(response){
+                    //limpa as referências presentes nesta propriedade, por conta do 2way databind, os inputs
+                    //tbm serão limpados
+                    delete $scope.contato;
 
-                //limpa as referências presentes nesta propriedade, por conta do 2way databind, os inputs
-                //tbm serão limpados
-                delete $scope.contato;
+                    $scope.contatoForm.$setPristine(); 
 
-                $scope.contatoForm.$setPristine(); 
+                    carregarContatos();
+                });
             };
 
             $scope.apagarContato = function(contatos){
