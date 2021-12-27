@@ -55,6 +55,12 @@
                 });
             }
 
+            var carregarOperadoras = function(){
+                $http.get("https://localhost:44343/api/operadoras").then(function(response){
+                    $scope.operadoras = response.data;
+                });
+            }
+
             $scope.contatos = [];
 
             $scope.adicionarContato = function(contato){
@@ -85,26 +91,16 @@
                 });
             }
 
-            $scope.operadoras = [
-                {nome:"Oi", codigo: 14   , categoria: "Celular", preco: 1},
-                {nome:"Vivo", codigo: 15 , categoria: "Celular", preco: 2},
-                {nome:"Tim", codigo: 16  , categoria: "Celular", preco: 2},
-                {nome:"GVT", codigo: 25  , categoria: "Fixo", preco: 1},
-                {nome:"Embratel", codigo: 21  , categoria: "Fixo", preco: 3}
-            ];
-
             $scope.ordenarPor = function(criterioOrdenacao) {
                 $scope.criterioDeOrdenacao = criterioOrdenacao;
                 $scope.isDesc = !$scope.isDesc;
             }
 
-            $scope.teste1 = 'sas';
-            $scope.teste2 = 'sa';
-
             $scope.classe1 = "selecionado";
             $scope.classe2 = "negrito";
 
             carregarContatos();
+            carregarOperadoras();
         })
     </script>
 </head>
