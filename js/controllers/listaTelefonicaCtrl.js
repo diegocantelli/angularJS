@@ -10,11 +10,11 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
     // ];
 
     var carregarContatos = function(){
-        $http.get("https://localhost:44343/api/Contatos")
-        .then(function(response) {
-            $scope.contatos = response.data;
-        })
-        .catch(err => console.log("ERRO: ", err));
+        contatosAPI.getContatos()
+            .then(function(response) {
+                $scope.contatos = response.data;
+            })
+            .catch(err => console.log("ERRO: ", err));
     }
 
     var carregarOperadoras = function(){
