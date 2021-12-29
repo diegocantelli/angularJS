@@ -1,7 +1,7 @@
 // localizando o módulu listaTelefonica e criando uma controller associada a este módulo
 // chamada listaTelefonicaCtrl
 //contatosAPI -> serviço criado para a busca de contatos via http
-angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter, $http, contatosAPI){
+angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter,contatosAPI, operadorasAPI){
     $scope.app = "Lista Telefonica";
     // $scope.contatos = [
     //     {nome: $filter('uppercase')("Pedro"), data: new Date(), telefone: "9999988888", cor: "yellow"},
@@ -18,7 +18,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
     }
 
     var carregarOperadoras = function(){
-        $http.get("https://localhost:44343/api/operadoras")
+        operadorasAPI.getOperadoras()
         .then(function(response){
             $scope.operadoras = response.data;
         })
