@@ -15,6 +15,7 @@
     <script src="js/services/contatosApiService.js"></script>
     <script src="js/services/operadorasAPIService.js"></script>
     <script src="js/value/configValue.js"></script>
+    <script src="js/services/serialGeneratorService.js"></script>
     
 </head>
 <body ng-controller="listaTelefonicaCtrl">
@@ -25,6 +26,7 @@
         <table class="table" ng-show="contatos.length > 0">
             <tr>
                 <th></th>
+                <th>Serial</th>
                 <th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
                 <th><a href="" ng-click="ordenarPor('telefone')"">Telefone</a></th>
                 <th>Operadora</th>
@@ -36,6 +38,7 @@
             irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
             <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca | orderBy:criterioDeOrdenacao:isDesc">
                 <td><input type="checkbox" ng-model="contato.selecionado"></td>
+                <td>{{contato.serial}}</td>
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>

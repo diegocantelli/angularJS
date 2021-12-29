@@ -1,7 +1,13 @@
 // localizando o módulu listaTelefonica e criando uma controller associada a este módulo
 // chamada listaTelefonicaCtrl
 //contatosAPI -> serviço criado para a busca de contatos via http
-angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter,contatosAPI, operadorasAPI){
+angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
+    $scope, 
+    $filter,
+    contatosAPI, 
+    operadorasAPI,
+    serialGenerator){
+        
     $scope.app = "Lista Telefonica";
     // $scope.contatos = [
     //     {nome: $filter('uppercase')("Pedro"), data: new Date(), telefone: "9999988888", cor: "yellow"},
@@ -28,6 +34,8 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
     $scope.contatos = [];
 
     $scope.adicionarContato = function(contato){
+
+        contato.serial = serialGenerator.generate();
         // angular.copy -> para não utilizar a mesma referência e as ações do input
         // acabarem refletindo no item já adicionado à lista
         // $scope.contatos.push(angular.copy(contato));
