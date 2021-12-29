@@ -31,7 +31,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
         // angular.copy -> para não utilizar a mesma referência e as ações do input
         // acabarem refletindo no item já adicionado à lista
         // $scope.contatos.push(angular.copy(contato));
-        $http.post("https://localhost:44343/api/Contatos", contato).then(function(response){
+        contatosAPI.save(contato).then(function(response){
             //limpa as referências presentes nesta propriedade, por conta do 2way databind, os inputs
             //tbm serão limpados
             delete $scope.contato;
