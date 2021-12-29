@@ -1,11 +1,11 @@
 //Registra o serviço contatosAPI no módulo listaTelefonica e passa a dependência de http como parâmetro
-angular.module("listaTelefonica").factory("contatosAPI", function($http){
+angular.module("listaTelefonica").factory("contatosAPI", function($http, config){
     var _getContatos = function(){
-        return $http.get("https://localhost:44343/api/Contatos");
+        return $http.get(config.baseUrl + "Contatos");
     };
 
     var _saveContato = function(contato){
-        return $http.post("https://localhost:44343/api/Contatos", contato);
+        return $http.post(config.baseUrl + "Contatos", contato);
     };
     
     return {
