@@ -21,12 +21,11 @@
     <script src="js/filters/nameFIlters.js"></script>
     <script src="js/filters/ellipsisFilter.js"></script>
     <script src="js/directives/uiAlertDirective.js"></script>
+    <script src="js/directives/uiDateDirective.js"></script>
     
 </head>
 <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
-        <!-- identificando em qual scopo estamos -->
-        {{$id}}
         <h4>{{app}}</h4>
         <ui-alert title="Ops, ocorreu um problema" message="erro"></ui-alert>
         <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="O quê você está buscando?">
@@ -64,6 +63,7 @@
        <form name="contatoForm">
             <input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
             <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-required="true"/>
+            <input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-date/>
             <!-- <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras ">
                 <option value="">Selecione uma operadora</option>
             </select> -->
