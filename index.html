@@ -28,7 +28,7 @@
         <!-- identificando em qual scopo estamos -->
         {{$id}}
         <h4>{{app}}</h4>
-        <div ui-alert></div>
+        <ui-alert title="Ops, ocorreu um problema" message="erro"></ui-alert>
         <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="O quê você está buscando?">
         <table class="table" ng-show="contatos.length > 0">
             <tr>
