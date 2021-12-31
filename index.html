@@ -60,6 +60,7 @@
        -->
        <!-- irá criar um objeto de validaçao dentro de $scope chamado contatoForm -->
 
+       {{contato.data}}
        <form name="contatoForm">
             <input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
             <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-required="true"/>

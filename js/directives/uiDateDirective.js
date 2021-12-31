@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").directive("uiDate", function(){
+angular.module("listaTelefonica").directive("uiDate", function($filter){
     return {
         require: "ngModel", //informa que a api do ngModel será acessível nesta diretiva
         //link -> executada depois do template ter sido carregado. Podemos utilizar para interagir com o DOM e eventos
@@ -21,6 +21,20 @@ angular.module("listaTelefonica").directive("uiDate", function(){
             element.bind("keyup", function(){
                 ctrl.$setViewValue(_formatDate(ctrl.$viewValue));
                 ctrl.$render();
+            });
+
+            //só irá devolver o valor pro scope caso a condição seja verdadeira
+            ctrl.$parsers.push(function(value){
+                if(value.length === 10){
+                    var dateArray = value.split("/");
+                    return new Date(dateArray[2], dateArray[1]-1, dateArray[0]).getTime();
+                    // return value;
+                }
+            });
+
+            //pega o valor recebido no scope e aplica este formatador
+            ctrl.$formatters.push(function(value){
+               return $filter("date")(value, "dd/MM/yyyy");
             });
         }
     };

@@ -9,6 +9,10 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
     serialGenerator){
 
     $scope.app = "Lista Telefonica";
+    $scope.contato = {
+        data: 1640919600000
+    }
+
     // $scope.contatos = [
     //     {nome: $filter('uppercase')("Pedro"), data: new Date(), telefone: "9999988888", cor: "yellow"},
     //     {nome: "Ana", data: new Date(),telefone: "9999987777", cor: "blue"},
