@@ -25,7 +25,8 @@
 </head>
 <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
-        <!-- <h4 ng-bind="app"></h4> -->
+        <!-- identificando em qual scopo estamos -->
+        {{$id}}
         <h4>{{app}}</h4>
         <div ui-alert></div>
         <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="O quê você está buscando?">
