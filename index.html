@@ -25,17 +25,9 @@
 </head>
 <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
-        <div ui-alert></div>
         <!-- <h4 ng-bind="app"></h4> -->
         <h4>{{app}}</h4>
-        <div class="ui-alert">
-            <div class="ui-alert-title">
-                Ops, ocorreu algum erro.
-            </div>
-            <div class="ui-alert-message">
-                {{erro}}
-            </div>
-        </div>
+        <div ui-alert></div>
         <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="O quê você está buscando?">
         <table class="table" ng-show="contatos.length > 0">
             <tr>
