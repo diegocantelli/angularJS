@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.usebootstrap.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/ui.css">
     <title>Lista Telefônica</title>
     <script src="angular.min.js"></script>
     <script src="angular-messages.min.js"></script>
@@ -19,12 +20,22 @@
     <script src="js/config/serialGeneratorConfig.js"></script>
     <script src="js/filters/nameFIlters.js"></script>
     <script src="js/filters/ellipsisFilter.js"></script>
+    <script src="js/directives/uiAlertDirective.js"></script>
     
 </head>
 <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
+        <div ui-alert></div>
         <!-- <h4 ng-bind="app"></h4> -->
         <h4>{{app}}</h4>
+        <div class="ui-alert">
+            <div class="ui-alert-title">
+                Ops, ocorreu algum erro.
+            </div>
+            <div class="ui-alert-message">
+                {{erro}}
+            </div>
+        </div>
         <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="O quê você está buscando?">
         <table class="table" ng-show="contatos.length > 0">
             <tr>

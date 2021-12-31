@@ -7,7 +7,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
     contatosAPI, 
     operadorasAPI,
     serialGenerator){
-        
+
     $scope.app = "Lista Telefonica";
     // $scope.contatos = [
     //     {nome: $filter('uppercase')("Pedro"), data: new Date(), telefone: "9999988888", cor: "yellow"},
@@ -15,12 +15,13 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
     //     {nome: "Maria", data: new Date(), telefone: "9999986688", cor: "red"}
     // ];
 
+    $scope.erro = '';
     var carregarContatos = function(){
         contatosAPI.getContatos()
             .then(function(response) {
                 $scope.contatos = response.data;
             })
-            .catch(err => console.log("ERRO: ", err));
+            .catch(err => $scope.erro = "Não foi possível carregar a lista de contatos");
     }
 
     var carregarOperadoras = function(){
@@ -28,7 +29,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
         .then(function(response){
             $scope.operadoras = response.data;
         })
-        .catch(err => console.log("ERRO: ", err));
+        .catch(err => $scope.erro ="Não foi possível carregar a lista de operadoras.");
     }
 
     $scope.contatos = [];
