@@ -4,7 +4,7 @@
 angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
     $scope, 
     $filter,
-    contatosAPI, 
+    contatos, 
     operadorasAPI,
     serialGenerator){
 
@@ -20,23 +20,29 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
     // ];
 
     $scope.erro = '';
-    var carregarContatos = function(){
-        contatosAPI.getContatos()
-            .then(function(response) {
-                $scope.contatos = response.data;
-            })
-            .catch(err => $scope.erro = "Não foi possível carregar a lista de contatos");
-    }
+    $scope.contatos = contatos.data; 
 
-    var carregarOperadoras = function(){
-        operadorasAPI.getOperadoras()
-        .then(function(response){
-            $scope.operadoras = response.data;
-        })
-        .catch(err => $scope.erro ="Não foi possível carregar a lista de operadoras.");
+    var generateSerial = function(contatos){
+        contatos.forEach(function(item){
+            item.serial = serialGenerator.generate();
+        });
     }
+    // var carregarContatos = function(){
+    //     contatosAPI.getContatos()
+    //         .then(function(response) {
+    //             $scope.contatos = response.data;
+    //         })
+    //         .catch(err => $scope.erro = "Não foi possível carregar a lista de contatos");
+    // }
 
-    $scope.contatos = [];
+    // var carregarOperadoras = function(){
+    //     operadorasAPI.getOperadoras()
+    //     .then(function(response){
+    //         $scope.operadoras = response.data;
+    //     })
+    //     .catch(err => $scope.erro ="Não foi possível carregar a lista de operadoras.");
+    // }
+
 
     $scope.adicionarContato = function(contato){
 
@@ -79,6 +85,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function(
     $scope.classe1 = "selecionado";
     $scope.classe2 = "negrito";
 
-    carregarContatos();
-    carregarOperadoras();
+    generateSerial($scope.contatos);
+    // carregarContatos();
+    // carregarOperadoras();
 });

@@ -2,7 +2,7 @@ angular.module("listaTelefonica").controller("novoContatoCtrl", function(
     $scope, 
     $location,
     contatosAPI,
-    operadorasAPI,
+    operadoras,
     serialGenerator){
 
     $scope.app = "Lista Telefonica";
@@ -14,13 +14,16 @@ angular.module("listaTelefonica").controller("novoContatoCtrl", function(
     
     $scope.contatos = [];
 
-    var carregarOperadoras = function(){
-        operadorasAPI.getOperadoras()
-        .then(function(response){
-            $scope.operadoras = response.data;
-        })
-        .catch(err => $scope.erro ="Não foi possível carregar a lista de operadoras.");
-    }
+    //Recebe o valor que está sendo passado via roteamento através do resolve
+    $scope.operadoras = operadoras.data;
+
+    // var carregarOperadoras = function(){
+    //     operadorasAPI.getOperadoras()
+    //     .then(function(response){
+    //         $scope.operadoras = response.data;
+    //     })
+    //     .catch(err => $scope.erro ="Não foi possível carregar a lista de operadoras.");
+    // }
 
     $scope.adicionarContato = function(contato){
 
@@ -36,5 +39,5 @@ angular.module("listaTelefonica").controller("novoContatoCtrl", function(
         });
     };
 
-    carregarOperadoras();
+    // carregarOperadoras();
 });
