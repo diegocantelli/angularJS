@@ -7,8 +7,10 @@ angular.module("listaTelefonica").config(function($routeProvider){
    });
 
    $routeProvider.when("/novocontato", {
-    templateUrl: "../../views/novoContato.html",
-    //dessa forma não é mais necessário linkar a controller na view, pode ser feito direto na config da rota
-    controller: "novoContatoCtrl"
-});
+        templateUrl: "../../views/novoContato.html",
+        //dessa forma não é mais necessário linkar a controller na view, pode ser feito direto na config da rota
+        controller: "novoContatoCtrl"
+   });
+
+   $routeProvider.otherwise({redirectTo: "/contatos"});
 });
