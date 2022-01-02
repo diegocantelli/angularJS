@@ -1,12 +1,13 @@
 angular.module("listaTelefonica").controller("novoContatoCtrl", function(
     $scope, 
+    $location,
     contatosAPI,
     operadorasAPI,
     serialGenerator){
 
     $scope.app = "Lista Telefonica";
     $scope.contato = {
-        data: 1640919600000
+        // data: 1640919600000
     }
 
     $scope.erro = '';
@@ -31,7 +32,7 @@ angular.module("listaTelefonica").controller("novoContatoCtrl", function(
 
             $scope.contatoForm.$setPristine(); 
 
-            carregarContatos();
+            $location.path("/contatos");
         });
     };
 

@@ -16,7 +16,7 @@
         irá buscar a classe css com o mesmo valor do conteúdo da propriedade $scope.classe -->
         <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: criterioDeBusca | orderBy:criterioDeOrdenacao:isDesc">
             <td><input type="checkbox" ng-model="contato.selecionado"></td>
-            <td>{{contato.serial}}</td>
+            <td>{{contato.serial | ellipsis:5}}</td>
             <td>{{contato.nome | name | ellipsis:5}}</td>
             <td>{{contato.telefone}}</td>
             <td>{{contato.operadora.nome}}</td>

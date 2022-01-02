@@ -3,14 +3,14 @@
     <form name="contatoForm">
         <input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
         <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-required="true"/>
-        <input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-date/>
+        <!-- <input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-date/> -->
         <!-- <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras ">
             <option value="">Selecione uma operadora</option>
         </select> -->
         <select class="form-control  mab-5" ng-model="contato.operadora" ng-options="operadora.nome + '(' + (operadora.preco | currency) + ')' for operadora in operadoras | orderBy:'nome'">
             <option value="">Selecione uma operadora</option>
         </select>
-        {{contatoForm.nome.$error}}
+        {{contato.data}}
         <div ng-messages="contatoForm.nome.$error">
             <!-- <div ng-message="required" class="alert alert-danger">
                 Por favor, preencha o nome.
