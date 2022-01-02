@@ -25,5 +25,16 @@ angular.module("listaTelefonica").config(function($routeProvider){
         }
    });
 
+   $routeProvider.when("/detalhescontato/:id", {
+        templateUrl: "../../views/detalhesContato.html",
+        //dessa forma não é mais necessário linkar a controller na view, pode ser feito direto na config da rota
+        controller: "detalhesContatoCtrl",
+        resolve: {
+            operadoras: function(operadorasAPI){
+                return operadorasAPI.getOperadoras();
+            }
+        }
+   });
+
    $routeProvider.otherwise({redirectTo: "/contatos"});
 });
