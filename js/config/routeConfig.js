@@ -9,6 +9,6 @@ angular.module("listaTelefonica").config(function($routeProvider){
    $routeProvider.when("/novocontato", {
     templateUrl: "../../views/novoContato.html",
     //dessa forma não é mais necessário linkar a controller na view, pode ser feito direto na config da rota
-    controller: "listaTelefonicaCtrl"
+    controller: "novoContatoCtrl"
 });
 });
